@@ -1,0 +1,58 @@
+/*
+ * Nós para os pinos do motor de passo.
+ * Cada nó define uma propriedade 'gpios' que o código C irá ler.
+ * Os pinos 16, 17, 18, 19 são exemplos de pinos de saída válidos no ESP32.
+ * Verifique o esquemático do seu ESP32 DevKitC para escolher pinos que
+ * não estejam em uso.  Os pinos em &gpio1 (GPIO 32-39) possuem restrições
+ * e alguns são apenas de entrada.
+ */
+/ {
+	aliases {
+		coilaplus = &coil_a_plus_pin;
+		coilaminus = &coil_a_minus_pin;
+		coilbplus = &coil_b_plus_pin;
+		coilbminus = &coil_b_minus_pin;
+	};
+
+    motor {
+        compatible = "gpio-leds";
+
+        coil_a_plus_pin: pin_a_plus {
+		    gpios = <&gpio0 16 GPIO_ACTIVE_HIGH>;
+		    label = "Coil A+";
+	    };
+        coil_a_minus_pin: pin_a_minus {
+            gpios = <&gpio0 17 GPIO_ACTIVE_HIGH>;
+            label = "Coil A-";
+        };
+
+        coil_b_plus_pin: pin_b_plus {
+            gpios = <&gpio0 18 GPIO_ACTIVE_HIGH>;
+            label = "Coil B+";
+        };
+
+        coil_b_minus_pin: pin_b_minus {
+            gpios = <&gpio0 19 GPIO_ACTIVE_HIGH>;
+            label = "Coil B-";
+        };
+    };
+
+    zephyr,user {
+		io-channels = <&adc0 0>;
+	};
+};
+
+&adc0 {
+    status = "okay";
+    #address-cells = <1>;
+    #size-cells = <0>;
+    
+    channel@0 {
+        reg = <0>;
+        zephyr,gain = "ADC_GAIN_1_4";
+        zephyr,reference = "ADC_REF_INTERNAL";
+        zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
+        //zephyr,input-positive = <NRF_SAADC_AIN4>; /* P1.11 */
+        zephyr,resolution = <12>;
+    };
+};

@@ -1,0 +1,5 @@
+board:
+  name: uedx80480043e
+  vendor: viewe
+  socs:
+    - name: esp32s3

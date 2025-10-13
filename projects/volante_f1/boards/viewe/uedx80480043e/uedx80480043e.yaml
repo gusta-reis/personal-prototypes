@@ -1,0 +1,15 @@
+identifier: uedx80480043e
+name: UEDX80480043E
+type: mcu
+arch: xtensa
+toolchain:
+  - zephyr
+ram: 8192
+flash: 16384
+supported:
+  - uart
+  - gpio
+  - spi
+  - i2c
+  - display
+vendor: viewe

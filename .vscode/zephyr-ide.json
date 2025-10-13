@@ -1,0 +1,110 @@
+{
+  "projects": {
+    "volante_f1": {
+      "rel_path": "projects\\volante_f1",
+      "name": "volante_f1",
+      "buildConfigs": {
+        "build\\uedx80480043e\\esp32s3\\procpu": {
+          "relBoardDir": "projects\\volante_f1\\boards",
+          "relBoardSubDir": "viewe\\uedx80480043e",
+          "board": "uedx80480043e/esp32s3/procpu",
+          "name": "build\\uedx80480043e\\esp32s3\\procpu",
+          "westBuildArgs": "",
+          "westBuildCMakeArgs": "",
+          "confFiles": {
+            "config": [],
+            "extraConfig": [],
+            "overlay": [],
+            "extraOverlay": []
+          },
+          "runnerConfigs": {
+            "esp32": {
+              "runner": "esp32",
+              "name": "esp32",
+              "args": ""
+            }
+          }
+        }
+      },
+      "twisterConfigs": {},
+      "confFiles": {
+        "config": [],
+        "extraConfig": [],
+        "overlay": [],
+        "extraOverlay": []
+      }
+    },
+    "balanco": {
+      "rel_path": "projects\\balanco",
+      "name": "balanco",
+      "buildConfigs": {
+        "build\\esp32_devkitc\\esp32\\procpu": {
+          "relBoardSubDir": "espressif\\esp32_devkitc",
+          "board": "esp32_devkitc/esp32/procpu",
+          "name": "build\\esp32_devkitc\\esp32\\procpu",
+          "westBuildArgs": "",
+          "westBuildCMakeArgs": "",
+          "confFiles": {
+            "config": [],
+            "extraConfig": [],
+            "overlay": [],
+            "extraOverlay": [
+              "projects\\balanco\\boards\\esp32_devkitc.overlay"
+            ]
+          },
+          "runnerConfigs": {
+            "esp32": {
+              "runner": "esp32",
+              "name": "esp32",
+              "args": ""
+            }
+          }
+        }
+      },
+      "twisterConfigs": {},
+      "confFiles": {
+        "config": [],
+        "extraConfig": [],
+        "overlay": [],
+        "extraOverlay": []
+      }
+    },
+    "adc_sequence": {
+      "rel_path": "zephyr\\samples\\drivers\\adc\\adc_sequence",
+      "name": "adc_sequence",
+      "buildConfigs": {
+        "build\\esp32_devkitc\\esp32\\procpu": {
+          "relBoardSubDir": "espressif\\esp32_devkitc",
+          "board": "esp32_devkitc/esp32/procpu",
+          "name": "build\\esp32_devkitc\\esp32\\procpu",
+          "westBuildArgs": "",
+          "westBuildCMakeArgs": "",
+          "confFiles": {
+            "config": [],
+            "extraConfig": [],
+            "overlay": [],
+            "extraOverlay": []
+          },
+          "runnerConfigs": {
+            "esp32": {
+              "runner": "esp32",
+              "name": "esp32",
+              "args": ""
+            }
+          }
+        }
+      },
+      "twisterConfigs": {},
+      "confFiles": {
+        "config": [],
+        "extraConfig": [
+          "projects\\balanco\\prj.conf"
+        ],
+        "overlay": [
+          "projects\\balanco\\boards\\esp32_devkitc.overlay"
+        ],
+        "extraOverlay": []
+      }
+    }
+  }
+}
