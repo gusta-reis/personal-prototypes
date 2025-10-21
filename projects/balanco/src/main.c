@@ -30,7 +30,7 @@ void adc_read_thread(void *p1, void *p2, void *p3)
     }
 
     struct adc_channel_cfg cfg = {
-        .gain = ADC_GAIN_1,
+        .gain = ADC_GAIN_1_4,
         .reference = ADC_REF_INTERNAL,
         .acquisition_time = ADC_ACQ_TIME_DEFAULT,
         .channel_id = adc_channel.channel_id,
@@ -42,19 +42,18 @@ void adc_read_thread(void *p1, void *p2, void *p3)
         return;
     }
 
-    struct adc_sequence sequence = {
-        .buffer = &sample_buffer,
-        .buffer_size = sizeof(sample_buffer),
-        .resolution = 12,
-    };
-
+    const struct adc_sequence sequence = {
+		.options     = NULL,
+		.channels    = BIT(adc_channel.channel_id),
+		.buffer      = &sample_buffer,
+		.buffer_size = sizeof(sample_buffer),
+		.resolution  = 12,
+	};
+    
     while (1) {
         int err = adc_read(adc_channel.dev, &sequence);
-        if (err < 0) {
-            LOG_ERR("ADC read error: %d", err);
-        } else {
-            LOG_INF("Leitura ADC: %d (bruto)", sample_buffer);
-        }
+        if (err) LOG_ERR("ADC read error: %d", err);
+        else LOG_INF("Leitura ADC: %d (bruto)", sample_buffer);
         k_msleep(1000);
     }
 }
@@ -190,6 +189,6 @@ int main(void)
 
     k_thread_create(&adc_data, adc_stack, K_THREAD_STACK_SIZEOF(adc_stack),
                     adc_read_thread, NULL, NULL, NULL, 7, 0, K_SECONDS(1));
-
+    
     return 0;
 }

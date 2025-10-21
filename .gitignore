@@ -1,5 +1,22 @@
+# Arquivos de Build
+build/
+**/*.a
+**/*.o
+**/*.obj
+**/*.elf
+**/*.hex
+**/*.bin
+**/*.map
+
+# Ferramentas do West/Zephyr
+.west/
+external/
+modules/
+zephyr/ # Se você não quer versionar todo o código-fonte do Zephyr, mas sim usar west init
+
+# Zephyr SDK (Geralmente baixado separadamente)
+zephyr-sdk-*
+
+# Ambientes virtuais
 .venv/
-external
-**/build*/
-.vscode/compile_commands.json
-.vscode/extensions.json
+.vscode/
