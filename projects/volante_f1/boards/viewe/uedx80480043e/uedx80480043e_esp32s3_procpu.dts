@@ -1,10 +1,11 @@
 /dts-v1/;
 #include <espressif/esp32s3/esp32s3_wroom_n16r8.dtsi>
+#include "uedx80480043e-pinctrl.dtsi"
 #include <zephyr/dt-bindings/input/input-event-codes.h>
-#include <espressif/partitions_0x1000_amp.dtsi>
+#include <espressif/partitions_0x0_amp.dtsi>
 #include <zephyr/dt-bindings/gpio/gpio.h>
 #include <zephyr/dt-bindings/led/led.h>
-#include "uedx80480043e-pinctrl.dtsi"
+
 
 / {
     model = "UEDX80480043E Smart Display";

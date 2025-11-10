@@ -1,0 +1,32 @@
+/dts-v1/;
+#include <espressif/esp32s3/esp32s3_wroom_n16r8.dtsi>
+#include <espressif/partitions_0x0_amp.dtsi>
+/ {
+    model = "UEDX80480043E Smart Display APPCPU";
+    compatible = "espressif,esp32s3";
+
+    chosen {
+        zephyr,sram = &sram1;
+		/* console can be UART or USB CDC */
+		/* zephyr,console = &uart0; */
+		/* zephyr,shell-uart = &uart0; */
+		zephyr,console = &usb_serial;
+		zephyr,shell-uart = &usb_serial;
+		zephyr,flash = &flash0;
+		zephyr,code-partition = &slot0_partition;
+		zephyr,bt-hci = &esp32_bt_hci;
+    };
+};
+
+
+&gpio0 {
+	status = "okay";
+};
+
+&gpio1 {
+	status = "okay";
+};
+
+&usb_serial {
+	status = "okay";
+};
