@@ -5,10 +5,14 @@
  */
 
 #include <stdio.h>
+#include <zephyr/kernel.h>
+#include <zephyr/sys/printk.h>	
 
 int main(void)
-{
-	printf("Hello World! %s\n", CONFIG_BOARD_TARGET);
-
+{	
+while (1){
+	printk("Hello World! %s\n", CONFIG_BOARD_TARGET);
+	k_msleep(1000);
+}
 	return 0;
 }
